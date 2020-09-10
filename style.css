@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -50,16 +52,16 @@ body {
     display: none;
 }
 .car {
+    z-index: 100;
     transform: rotate(90deg);
     width: 100px;
     height: 50px;
     background: transparent url('./image/newPlayer.png') center / cover no-repeat;
     position: absolute;
-    left: 100px;
-    bottom: 40px;
 }
 
 .enemy {
+    z-index: 100;
     transform: rotate(180deg);
     width: 50px;
     height: 100px;
@@ -70,18 +72,53 @@ body {
 }
 
 .gameArea {
+    z-index: 10;
     width: 300px;
     height: 100vh;
     position: relative;
-    margin: auto;
     background: #222;
+    margin: auto;
     overflow: hidden;
 }
 
 .line {
+    z-index: 100;
     position: absolute;
     width: 10px;
     height: 50px;
     background: orange;
     left: 145px;
+}
+
+.start {
+    position: absolute;
+    margin: 100px 20px 0;
+    padding: 10px 0;
+    width: 250px;
+    text-align: center;
+    z-index: 200;
+    cursor: pointer;
+    font-size: 35px;
+    color: teal;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    border: 5px solid darkgray;
+    border-radius: 100px;
+    transition: 1.5s;
+    background: #222;
+}
+
+.start:hover
+{
+    box-shadow: 0 5px 50px 0 dimgray inset, 0 5px 50px 0 dimgray;
+    text-shadow: 0 0 5px teal;
+}
+
+.score {
+    position: absolute;
+    z-index: 200;
+    color: mediumseagreen;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 0 0 10px;
+    font-size: 18px;
 }
