@@ -1,7 +1,9 @@
 const score = document.querySelector('.score'),
       start = document.querySelector('.start'),
       gameArea = document.querySelector('.gameArea'),
-      car = document.createElement('div');
+      car = document.createElement('div'),
+      audioRide = document.querySelector('.audio-ride'),
+      audioCrash = document.querySelector('.audio-crash');
 
 car.classList.add('car');
 
@@ -29,6 +31,8 @@ function startGame() {
     gameArea.appendChild(start);
     gameArea.appendChild(score);
     score.textContent = 'SCORE: ' + setting.score;
+    audioCrash.pause();
+    audioRide.play();
     
     for (let i = 0; i < getQuantityElements(100); i++) {
         const line = document.createElement('div');
@@ -122,6 +126,8 @@ function moveEnemy() {
                 
                 start.classList.remove('hide');
                 start.textContent = 'RESTART';
+                audioRide.pause();
+                audioCrash.play();
                 console.warn('DTP');
         }
 
