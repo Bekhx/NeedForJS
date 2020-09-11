@@ -17,7 +17,7 @@ const keys = {
 const setting = {
     start: false,
     score: 0,
-    speed: 3,
+    speed: 5,
     traffic: 3
 };
 
@@ -33,7 +33,7 @@ function startGame() {
     score.textContent = 'SCORE: ' + setting.score;
     audioCrash.pause();
     audioRide.play();
-    
+
     for (let i = 0; i < getQuantityElements(100); i++) {
         const line = document.createElement('div');
         line.classList.add('line');
@@ -45,7 +45,9 @@ function startGame() {
     for (let i = 0; i < getQuantityElements(100 * setting.traffic); i++) {
         const enemy = document.createElement('div');
         enemy.classList.add('enemy');
+        let enemyImage = Math.floor(Math.random() * 4) + 1;
         enemy.y = -100 * setting.traffic * (i +1);
+        enemy.style.background = `transparent url(./image/newEnemy${enemyImage}.png) center / cover no-repeat`;
         enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) +'px';
         enemy.style.top = enemy.y + 'px';
         gameArea.appendChild(enemy);
@@ -56,8 +58,8 @@ function startGame() {
     setting.start = true;
     gameArea.appendChild(car);
     car.style.top = 'auto';
-    car.style.bottom = '40px';
-    car.style.left = '100px';
+    car.style.bottom = '30px';
+    car.style.left = '125px';
     setting.x = car.offsetLeft;
     setting.y = car.offsetTop;
     requestAnimationFrame(playGame);
@@ -69,16 +71,16 @@ function playGame() {
         score.textContent = 'SCORE: ' + setting.score;
         moveRoad();
         moveEnemy();
-        if(keys.ArrowLeft && setting.x > -20) {
-            setting.x -= setting.speed;
+        if(keys.ArrowLeft && setting.x > 10) {
+            setting.x -= setting.speed/2;
         }
-        if(keys.ArrowRight && setting.x < (gameArea.offsetWidth - 75)) {
-            setting.x += setting.speed;
+        if(keys.ArrowRight && setting.x < (gameArea.offsetWidth - 60)) {
+            setting.x += setting.speed/2;
         }
-        if(keys.ArrowDown && setting.y < (gameArea.offsetHeight - 80)) {
+        if(keys.ArrowDown && setting.y < (gameArea.offsetHeight - 100)) {
             setting.y += setting.speed * 2;
         }
-        if(keys.ArrowUp && setting.y > 25) {
+        if(keys.ArrowUp && setting.y > 10) {
             setting.y -= setting.speed;
         }
 
@@ -120,18 +122,16 @@ function moveEnemy() {
         if(carRect.top <= enemyRect.bottom &&
             carRect.right >= enemyRect.left &&
             carRect.left <= enemyRect.right &&
-            carRect.bottom >= enemyRect.top &&
-            setting.start) {
+            carRect.bottom >= enemyRect.top) {
                 setting.start = false;
                 
                 start.classList.remove('hide');
                 start.textContent = 'RESTART';
                 audioRide.pause();
                 audioCrash.play();
-                console.warn('DTP');
         }
 
-        item.y += setting.speed / 2;
+        item.y += setting.speed / 1.5;
         item.style.top = item.y +'px';
         
         if(item.y >= document.documentElement.clientHeight) {

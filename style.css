@@ -53,16 +53,14 @@ body {
 }
 .car {
     z-index: 100;
-    transform: rotate(90deg);
-    width: 100px;
-    height: 50px;
+    width: 50px;
+    height: 100px;
     background: transparent url('./image/newPlayer.png') center / cover no-repeat;
     position: absolute;
 }
 
 .enemy {
     z-index: 100;
-    transform: rotate(180deg);
     width: 50px;
     height: 100px;
     background: transparent url('./image/newEnemy2.png') center / cover no-repeat;
@@ -92,8 +90,8 @@ body {
 
 .start {
     position: absolute;
-    margin: 100px 20px 0;
     padding: 10px 0;
+    margin: 250px 20px 0;
     width: 250px;
     text-align: center;
     z-index: 200;
@@ -104,13 +102,13 @@ body {
     font-weight: 400;
     border: 5px solid darkgray;
     border-radius: 100px;
-    transition: 1.5s;
+    transition: 1s;
     background: #222;
 }
 
 .start:hover
 {
-    box-shadow: 0 5px 50px 0 dimgray inset, 0 5px 50px 0 dimgray;
+    box-shadow: 0 5px 50px 0 dimgray inset;
     text-shadow: 0 0 5px teal;
 }
 
